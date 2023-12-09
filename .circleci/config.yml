@@ -3,6 +3,7 @@ version: 2.1
 # Agregar Orb SonarCloud#
 orbs:
   sonarcloud: sonarsource/sonarcloud@2.0.0
+  ggshield: gitguardian/ggshield@1.1.4
 
 jobs:
   build_and_test:
@@ -38,3 +39,9 @@ workflows:
   build:
     jobs:
       - build_and_test
+      - - ggshield/scan:
+            name: ggshield-scan
+            base_revision: << pipeline.git.base_revision >>
+            revision: << pipeline.git.revision >>
+            requires:
+              - build_and_test
