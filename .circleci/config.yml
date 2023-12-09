@@ -24,7 +24,7 @@ jobs:
       - run: mvn package -B && ls target
       - store_artifacts:
           path: ./target/PracticaCi-Cd-1.0-SNAPSHOT.jar
-      - run: mvn deploy
+      - run: mvn deploy -s .m2/settings.xml
 
 
       # Guardar la caché de las dependencias de Maven para futuras ejecuciones
