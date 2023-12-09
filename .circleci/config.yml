@@ -23,7 +23,7 @@ jobs:
       - sonarcloud/scan
       - run: mvn package -B && ls target
       - store_artifacts:
-          path: ./target/SampleJavaProject-1.0-SNAPSHOT.jar
+          path: ./target/PracticaCi-Cd-1.0-SNAPSHOT.jar
       - run: mvn deploy -s .m2/settings.xml
 
 
