@@ -1,0 +1,40 @@
+version: 2.1
+
+# Agregar Orb SonarCloud
+orbs:
+  sonarcloud: sonarsource/sonarcloud@2.0.0
+
+jobs:
+  build_and_test:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
+      # Restaurar la caché de las dependencias de Maven
+      - restore_cache:
+          keys:
+            - v1-maven-{{ checksum "pom.xml" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-maven-
+
+      - run: mvn clean install # Compila y ejecuta los tests
+      - run: mvn jacoco:report # Genera el informe de cobertura
+      - run: mvn checkstyle:check # Ejecuta el linting de la aplicación
+      - sonarcloud/scan
+      - run: mvn package -B && ls target
+      - store_artifacts:
+          path: ./target/SampleJavaProject-1.0-SNAPSHOT.jar
+      - run: mvn deploy -s .m2/settings.xml
+
+
+      # Guardar la caché de las dependencias de Maven para futuras ejecuciones
+      - save_cache:
+          paths:
+            - ~/.m2/repository
+          key: v1-maven-{{ checksum "pom.xml" }}
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build_and_test
