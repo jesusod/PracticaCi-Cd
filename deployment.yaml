@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: practicaci-cd-deployment
+spec:
+  replicas: 2  # Número de réplicas de tu aplicación
+  selector:
+    matchLabels:
+      app: practicaci-cd
+  template:
+    metadata:
+      labels:
+        app: practicaci-cd
+    spec:
+      containers:
+        - name: practicaci-cd
+          image: jesusod/practicaci-cd:1.0  # Reemplaza con el nombre de tu imagen
+          ports:
+            - containerPort: 8080  # Asegúrate de que este es el puerto correcto en el que tu aplicación escucha
