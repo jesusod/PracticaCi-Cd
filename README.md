@@ -1,2 +1,3 @@
-# SampleJavaProject
-Sample project for testing unit tests, coverage plugins, Jenkins pipelines etc
+# Practica Ci/cd
+
+Repositorio de artefactos donde se encuentra la aplicacion: https://github.com/jesusod/PracticaCi-Cd/packages/2011552
