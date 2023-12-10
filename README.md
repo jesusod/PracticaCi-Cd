@@ -37,6 +37,10 @@ Proyecto en GitGuardian:
 
 ![image](https://github.com/jesusod/PracticaCi-Cd/assets/99189407/5bf0a097-ab25-49ee-9919-559fa15c13b7)
 
+Enlace a video de Youtube:
+
+https://youtu.be/Xd1cpTjj5Wc
+
 
 
 
