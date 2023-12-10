@@ -10,6 +10,7 @@ WORKDIR /app
 # Copiar el archivo pom.xml y el código fuente
 COPY pom.xml .
 COPY src ./src
+COPY MANIFEST.MF .
 
 # Compilar la aplicación y omitir las pruebas
 # Nota: Asumo que deseas omitir las pruebas aquí; si no, quita '-DskipTests'
